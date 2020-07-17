@@ -6,19 +6,19 @@ $(function() {
       // additional error messages or events
     },
     submitSuccess: function($form, event) {
-      event.preventDefault(); // prevent default submit behaviour
+      event.preventDefault(); // prevent default submit behaviour - impedir o comportamento de envio padrão
       // get values from FORM
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
       var message = $("textarea#message").val();
-      var firstName = name; // For Success/Failure Message
-      // Check for white space in name for Success/Fail message
+      var firstName = name; // For Success/Failure Message - Mensagem de sucesso / falha
+      // Check for white space in name for Success/Fail message - Verifique se há espaço em branco no nome da mensagem de Sucesso / Falha
       if (firstName.indexOf(' ') >= 0) {
         firstName = name.split(' ').slice(0, -1).join(' ');
       }
       $this = $("#sendMessageButton");
-      $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+      $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages - Desative o botão enviar até que a chamada AJAX seja concluída para evitar mensagens duplicadas
       $.ajax({
         url: "contact_me.php",
         type: "POST",
@@ -30,7 +30,7 @@ $(function() {
         },
         cache: false,
         success: function() {
-          // Success message
+          // Success message - Mensagem de sucesso
           $('#success').html("<div class='alert alert-success'>");
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
@@ -38,7 +38,7 @@ $(function() {
             .append("<strong>Your message has been sent. </strong>");
           $('#success > .alert-success')
             .append('</div>');
-          //clear all fields
+          //clear all fields - limpe todos os campos
           $('#contactForm').trigger("reset");
         },
         error: function() {
@@ -53,7 +53,7 @@ $(function() {
         },
         complete: function() {
           setTimeout(function() {
-            $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+            $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete - Reative o botão enviar quando a chamada AJAX estiver concluída
           }, 1000);
         }
       });
@@ -69,7 +69,7 @@ $(function() {
   });
 });
 
-/*When clicking on Full hide fail/success boxes */
+/* When clicking on Full hide fail/success boxes - Ao clicar em Ocultar completo caixas de falha / êxito */
 $('#name').focus(function() {
   $('#success').html('');
 });

@@ -19,7 +19,7 @@ $message = strip_tags(htmlspecialchars($_POST['message']));
 $to = "andrefranklinweb@gmail.com"; // Adicione seu endereço de e-mail entre "", substituindo seunome@seudominio.com.br - É para onde o formulário enviará uma mensagem.
 $email_subject = "Website Contact Form:  $name";
 $email_body = "Você recebeu uma nova mensagem do formulário de contato do site.\n\n"."Aqui estão os detalhes:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-$headers = "From: noreply@yourdomain.com\n"; // Este é o endereço de email a partir do qual a mensagem gerada será. Recomendamos o uso de algo como noreply@yourdomain.com.
+$headers = "From: andrefranklinweb@gmail.com\n"; // Este é o endereço de email a partir do qual a mensagem gerada será. Recomendamos o uso de algo como noreply@yourdomain.com.
 $headers .= "Reply-To: $email_address";   
 mail($to,$email_subject,$email_body,$headers);
 return true;         
